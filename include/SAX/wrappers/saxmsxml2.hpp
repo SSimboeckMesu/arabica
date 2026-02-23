@@ -15,6 +15,8 @@
 #include <Arabica/getparam.hpp>
 
 // Include the MSXML definitions.
+#include <windows.h>
+#include <objbase.h>
 #include <msxml2.h>
 
 //
