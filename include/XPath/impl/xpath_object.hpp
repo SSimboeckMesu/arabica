@@ -506,10 +506,19 @@ template<typename string_type, typename string_adaptor> struct value_of_node<dou
   double operator()(const DOM::Node<string_type, string_adaptor>& node) { return nodeNumberValue<string_type, string_adaptor>(node); }
 }; 
 
+template<typename Op>
+struct opTraits;
+
+template<template<typename> class Comp, typename T>
+struct opTraits<Comp<T>>
+{
+  typedef T value_type;
+};
+
 template<class Op, class string_type, class string_adaptor>
 class compareNodeWith
 {
-  typedef typename Op::first_argument_type T;
+  typedef typename opTraits<Op>::value_type T;
 
 
 public:
